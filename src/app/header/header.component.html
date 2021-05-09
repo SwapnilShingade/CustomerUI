@@ -1,0 +1,58 @@
+<div class="header-nav">
+  <mat-toolbar color="primary" class="">
+    <mat-toolbar-row> 
+
+      <a routerLink="/home">
+        <img class="setu-img" src="/assets/images/logo.png" alt="ABC Customer Portal">        
+      </a>
+      <span class="setu-text">ABC Customer Portal</span>
+            <!-- <span>Responsive Navigation</span> -->
+      
+      
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/search" routerLinkActive="active-link">
+          Search
+        </a>
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/donor-details" routerLinkActive="active-link">
+          Become a donor
+        </a>
+
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/request-plasma" routerLinkActive="active-link">
+          Request Plasma
+        </a>
+
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/profile" *ngIf="isloggedIn()" routerLinkActive="active-link">
+          Profile
+        </a>
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/plasma-info" routerLinkActive="active-link">
+          Know more
+        </a>
+
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/login" *ngIf="!isloggedIn()" routerLinkActive="active-link">
+          Login
+        </a>
+        <a (click)="sidenav.toggle()" mat-list-item [routerLink]="['/login']" *ngIf="isloggedIn()" routerLinkActive="active-link">
+          Logout
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content fxFlexFill>
+      <div class="container-fluid">
+        <div class="row justify-content-center no-gutters">
+          <div class="setu-main-content col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <!-- <alert></alert> -->
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
